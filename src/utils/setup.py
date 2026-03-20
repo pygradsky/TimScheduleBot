@@ -30,8 +30,6 @@ async def _create_table() -> None:
             )"""
         )
 
-        await conn.commit()
-
 
 async def setup() -> None:
     await _create_dirs()
