@@ -1,7 +1,7 @@
 import os
 
 from src.configs.config import DataConfig
-from src.db.db_operations import create_table
+from src.db.db_operations import init_db, create_table
 
 data_config = DataConfig()
 
@@ -20,4 +20,5 @@ async def create_dirs() -> None:
 
 async def setup() -> None:
     await create_dirs()
+    await init_db(db_file)
     await create_table()

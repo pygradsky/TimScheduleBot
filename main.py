@@ -5,7 +5,9 @@ import os
 from aiogram import Bot, Dispatcher
 from dotenv import load_dotenv
 
+
 from src.utils.setup import setup
+from src.db.db_operations import close_db
 from src.bot.handlers import __all_routers__
 
 
@@ -32,3 +34,8 @@ if __name__ == '__main__':
         asyncio.run(main())
     except KeyboardInterrupt:
         pass
+    finally:
+        try:
+            asyncio.run(close_db())
+        except:
+            pass
