@@ -5,10 +5,10 @@ import os
 from aiogram import Bot, Dispatcher
 from dotenv import load_dotenv
 
-
 from src.utils.setup import setup
 from src.db.db_operations import close_db
 from src.handlers import __all_routers__
+from src.handlers.schedule_cmd import build_cache
 
 
 async def main() -> None:
@@ -25,6 +25,7 @@ async def main() -> None:
         dp.include_router(router)
 
     await setup()
+    build_cache()
     await dp.start_polling(bot)
 
 
